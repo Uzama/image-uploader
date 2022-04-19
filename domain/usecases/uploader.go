@@ -6,10 +6,12 @@ import (
 	"imageUploader/domain/interfaces"
 )
 
+// usecase layer
 type UploaderUsecase struct {
 	repo interfaces.UploaderRepository
 }
 
+// create new usecase
 func NewUploaderUsecase(repo interfaces.UploaderRepository) UploaderUsecase {
 	usecase := UploaderUsecase{
 		repo: repo,

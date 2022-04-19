@@ -6,6 +6,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+// database config
 type Database struct {
 	User               string `yaml:"user"`
 	Password           string `yaml:"password"`
@@ -21,6 +22,7 @@ type Database struct {
 	Timeout            int    `yaml:"timeout"`
 }
 
+// parsing database config
 func (db *Database) Parse() error {
 
 	yamlFile, err := ioutil.ReadFile("configurations/database.yaml")

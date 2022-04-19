@@ -1,5 +1,6 @@
 package entities
 
+// entity
 type FileInfo struct {
 	FileName    string
 	Path        string

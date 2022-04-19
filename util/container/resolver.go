@@ -7,6 +7,7 @@ import (
 	"imageUploader/util/config"
 )
 
+// initiate containers
 func Resolve(config config.Config) (Containers, error) {
 	adaptrs, err := resolveAdapters(config)
 	if err != nil {
@@ -26,6 +27,7 @@ func Resolve(config config.Config) (Containers, error) {
 	return cont, nil
 }
 
+// initiate adapters
 func resolveAdapters(config config.Config) (Adapters, error) {
 
 	mysql, err := adapters.NewDB(config.Database)
@@ -40,6 +42,7 @@ func resolveAdapters(config config.Config) (Adapters, error) {
 	return adapters, nil
 }
 
+// initiate repositories
 func resolveRepostories(db *sql.DB) (Repositories, error) {
 	noteRepo := repositories.NewUploaderRepository(db)
 

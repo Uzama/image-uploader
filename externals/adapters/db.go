@@ -9,6 +9,7 @@ import (
 	"github.com/go-sql-driver/mysql"
 )
 
+// creating a new db connection
 func NewDB(conf config.Database) (*sql.DB, error) {
 
 	config := mysql.Config{

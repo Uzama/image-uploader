@@ -16,25 +16,30 @@ import (
 
 func Start(ctx context.Context) {
 
+	// reading param from command line
 	err := cmd.ReadParam()
 	if err != nil {
 		log.Fatalln(err)
 	}
 
+	// parsing configurations
 	conf, err := config.Parse()
 	if err != nil {
 		log.Fatalln(err)
 	}
 
+	// initializing repositories and adapters
 	ctr, err := container.Resolve(conf)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
+	// initializing the router
 	r := router.Init(ctr)
 
 	server := server.NewHTTPServer(conf, r)
 
+	// start the server
 	go server.ListnAndServe(ctx)
 
 	c := make(chan os.Signal, 1)
@@ -43,6 +48,7 @@ func Start(ctx context.Context) {
 
 	<-c
 
+	// graceful shutdown
 	Destruct(ctx, ctr, server)
 
 	os.Exit(0)

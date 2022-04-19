@@ -1,5 +1,6 @@
 package config
 
+// parsing config
 func Parse() (Config, error) {
 	app := &App{}
 	db := &Database{}

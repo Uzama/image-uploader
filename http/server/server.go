@@ -11,11 +11,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// server
 type HTTPServer struct {
 	server  *http.Server
 	address string
 }
 
+// creating new server
 func NewHTTPServer(config config.Config, r *mux.Router) HTTPServer {
 
 	address := config.App.Host + ":" + strconv.Itoa(config.App.Port)
@@ -37,6 +39,7 @@ func NewHTTPServer(config config.Config, r *mux.Router) HTTPServer {
 	return httpServer
 }
 
+// up and running the server
 func (srv HTTPServer) ListnAndServe(ctx context.Context) {
 
 	log.Printf("server listening on %s", srv.address)
@@ -47,6 +50,7 @@ func (srv HTTPServer) ListnAndServe(ctx context.Context) {
 	}
 }
 
+// gracefully shutdown the server
 func (srv HTTPServer) Shutdown(ctx context.Context) {
 
 	log.Println("stropping HTTP server")

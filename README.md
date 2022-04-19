@@ -1,5 +1,5 @@
 # image-uploader
-A simple Golang application to upload image files.
+A simple Golang application to upload image files. The application code is organized using **Clean Architecture**
 
 
 ### How to start 
